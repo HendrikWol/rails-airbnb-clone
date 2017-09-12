@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-
     redirect_to apartment_path(@apartment)
   end
 
@@ -34,6 +33,7 @@ class BookingsController < ApplicationController
   def set_apartment
     @apartment = Apartment.find(params[:apartment_id])
   end
+
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :total_price, :status)
   end
