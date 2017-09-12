@@ -55,19 +55,7 @@ Rails.application.routes.draw do
 
   get 'profiles/destroy'
 
-  get 'apartments/index'
-
-  get 'apartments/show'
-
-  get 'apartments/new'
-
-  get 'apartments/create'
-
-  get 'apartments/edit'
-
-  get 'apartments/update'
-
-  get 'apartments/destroy'
+  resources :apartments
 
   get 'bookings/index'
 
