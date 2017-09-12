@@ -10,11 +10,12 @@
   </head>
   <body>
 
+
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    <%= javascript_include_tag 'application' %>
     <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-
-
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
   </body>
 </html>
