@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-4-offset-3">
-      <%= simple_form_for(@apartment) do |f| %>
+      <%= simple_form_for(@profile) do |f| %>
       <%= f.input :first_name %>
       <%= f.input :last_name  %>
-      <%= f.input :gender %>
+
       <%= f.input :description %>
       <%= f.input :date_of_birth, as: :date %>
       <%= f.input :phone_number %>
+      <%= f.button :submit %>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,5 @@
 class AmenitiesController < ApplicationController
-    before_action :set_apartment
+  before_action :set_apartment
 
   def create
     amenity = Amenity.new(amenity_params)
@@ -16,6 +16,7 @@ class AmenitiesController < ApplicationController
   end
 
   private
+
   def amenity_params
     params.require(:amenity).permit(:wifi, :kitchen, :gym, :pool, :tv, :pets_allowed, :smoking_allowed, :shampoo, :air_condition, :heating, :hair_dryer)
   end
@@ -24,5 +25,3 @@ class AmenitiesController < ApplicationController
     @apartment = Apartment.find(params[:apartment_id])
   end
 end
-
-
