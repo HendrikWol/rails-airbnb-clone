@@ -2,6 +2,7 @@ class Apartment < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :reviews
+  has_one :amenity
 
   validates :address, presence: true
   validates :city, presence: true
