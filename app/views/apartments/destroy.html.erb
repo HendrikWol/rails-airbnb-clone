@@ -1,2 +1,3 @@
-<h1>Apartments#destroy</h1>
-<p>Find me in app/views/apartments/destroy.html.erb</p>
+<%= link_to "Delete", apartment_path(apartment),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>

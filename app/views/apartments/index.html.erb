@@ -1,2 +1,14 @@
-<h1>Apartments#index</h1>
-<p>Find me in app/views/apartments/index.html.erb</p>
+<h1>Check the apartments available</h1>
+<% @apartments.each do |apartment| %>
+  <h2><%= apartment.name %></h2>
+  <p><%= apartment.description %></p>
+  <p><%= apartment.apartment_type %></p>
+  <p><%= apartment.price %></p>
+  <p><%= apartment.number_of_guests %></p>
+  <p><%= apartment.number_of_beds %></p>
+  <p><%= apartment.number_of_bedrooms %></p>
+  <p><%= apartment.number_of_bathrooms %></p>
+  <p><%= apartment.checkin_time  %></p>
+  <p><%= apartment.checkout_time %></p>
+  <!-- more attributes of the apartment -->
+<% end %>
