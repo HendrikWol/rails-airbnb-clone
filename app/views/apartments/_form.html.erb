@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4-offset-3">
+      <%= simple_form_for(@apartment) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description  %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :country, as: :text %>
+
+      <%= f.input :price %>
+      <%= f.input :apartment_type, as: :select, :collection => ["Entire home", "Private room", "Shared room"] %>
+      <%= f.input :number_of_guests %>
+      <%= f.input :number_of_bedrooms %>
+      <%= f.input :number_of_bathrooms %>
+      <%= f.input :number_of_beds %>
+      <%= f.input :checkin_time %>
+      <%= f.input :checkout_time %>
+       <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
