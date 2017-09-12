@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911155817) do
+ActiveRecord::Schema.define(version: 20170912091203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.boolean "wifi"
+    t.boolean "kitchen"
+    t.boolean "gym"
+    t.boolean "pool"
+    t.boolean "tv"
+    t.boolean "pets_allowed"
+    t.boolean "smoking_allowed"
+    t.boolean "shampoo"
+    t.boolean "air_condition"
+    t.boolean "heating"
+    t.boolean "hair_dryer"
+    t.bigint "apartment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_amenities_on_apartment_id"
+  end
 
   create_table "apartments", force: :cascade do |t|
     t.string "name"
@@ -23,7 +41,6 @@ ActiveRecord::Schema.define(version: 20170911155817) do
     t.string "country"
     t.integer "price"
     t.string "apartment_type"
-    t.string "amenities"
     t.integer "number_of_guests"
     t.integer "number_of_bedrooms"
     t.integer "number_of_bathrooms"
@@ -90,6 +107,7 @@ ActiveRecord::Schema.define(version: 20170911155817) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amenities", "apartments"
   add_foreign_key "apartments", "users"
   add_foreign_key "bookings", "apartments"
   add_foreign_key "bookings", "users"
