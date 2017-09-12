@@ -9,20 +9,24 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
     # @review = Review.find(params[:id])
   end
 
-  def new
-    @review  = Review.new
-  end
+  # def new
+  #   @review  = Review.new
+  # end
 
   def create
     @review = Review.new(review_params)
-    @review.appartment = current_appartment
-    @review.user = current_user
+    @apartment = Apartment.find(params[:apartment_id])
+    # @review.appartment = current_appartment
+
+    # @review.user_id = current_user
+    @review.apartment = @apartment
     if @review.save
-      redirect_to apartment_index_path
+      redirect_to apartment_path(@apartment)
     else
       render :new
     end
   end
+
 
   def edit
   end

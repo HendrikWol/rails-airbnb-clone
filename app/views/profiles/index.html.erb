@@ -1,2 +1,7 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/index.html.erb</p>
+<h1>Check the profiles available</h1>
+<% @profiles.each do |profile| %>
+  <p><%= profile.first_name %></p>
+  <p><%= profile.last_name %></p>
+
+  <!-- more attributes of the apartment -->
+<% end %>

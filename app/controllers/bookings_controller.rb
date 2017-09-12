@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     # we need to attach the user and the appartment to the booking
-    @booking.user = current_user
+    @booking.user_id = current_user
     # apartments/2/bookings
     @booking.apartment = @apartment
     if @booking.save

@@ -1,5 +1,5 @@
 
-<div class="flat-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url('https://kitt.lewagon.com/placeholder/cities/<%= flat.city_slug %>');">
+<div class="flat-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%);">
 </div>
 
 <div class="profile-container">
@@ -8,15 +8,12 @@
       <div class="profile">
           <!-- Inject flat data in template -->
         <div class="profile-box">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{owner}", class: "profile-img" %>
-          <p><%= apartment.name %></p>
+          <p><%= @apartment.name %></p>
           </div>
           <div class="profile-description">
-            <h1><%= apartment.description %></h1>
-            <p><%= apartment.city %></p>
-            <% apartment.rating do %>
-            <i class="fa fa-star"></i>
-            <%end%>
+            <h1><%= @apartment.description %></h1>
+            <p><%= @apartment.city %></p>
+
 
           </div>
         </div>
@@ -51,7 +48,14 @@
 
 <div class="info-container">
   <h2>About this place</h2>
-  <p><%= apartment.description %></p>
+  <p><%= @apartment.description %></p>
+
+ <%= simple_form_for [@apartment, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+    <% end %>
+
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-2">
@@ -59,15 +63,15 @@
       </div>
       <div class="col-xs-12 col-sm-4">
         <ul class="list-unstyled">
-          <li>Accommodates: <strong><%= apartment.apartment_type %></strong></li>
-          <li>Bathrooms: <strong><%= apartment.number_of_bathrooms %></strong></li>
-          <li>Beds: <strong><%= apartment.number_of_beds %></strong></li>
+          <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
+          <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
+          <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
         </ul>
       </div>
        <div class="col-xs-12 col-sm-4">
         <ul class="list-unstyled">
           <li>Property type: <strong></strong></li>
-          <li>Bedrooms: <strong><%= apartment.number_of_bedrooms %></strong></li>
+          <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
         </ul>
       </div>
     </div>
@@ -91,16 +95,7 @@
     </div>
 </div>
 
-<h1>This apartment</h1>
 
-<h2><%= @apartment.name %></h2>
-<p><%= @apartment.city %>, <%= @apartment.country %></p>
-<p><%= @apartment.number_of_guests %> <%= @apartment.number_of_beds %> <%= @apartment.number_of_bedrooms %> <%= @apartment.number_of_bathrooms %></p>
-  <p><%= @apartment.description %></p>
-  <p><%= @apartment.apartment_type %></p>
-  <p><%= @apartment.price %></p>
-  <p><%= @apartment.checkin_time  %></p>
-  <p><%= @apartment.checkout_time %></p>
 <!-- more atributes of the apartments -->
 
 

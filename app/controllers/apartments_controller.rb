@@ -6,6 +6,8 @@ class ApartmentsController < ApplicationController
   end
 
   def show
+    @review = Review.new
+    @review.save
   end
 
   def new
@@ -14,9 +16,7 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
-    @apartment.user = current_user
-
-    raise
+    @apartment.user_id = current_user
     if @apartment.save
       redirect_to apartments_path
     else

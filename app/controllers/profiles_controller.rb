@@ -1,20 +1,23 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @profiles = Profile.all
+  end
+
   def show
     @profile = Profile.find(params[:id])
   end
 
   def new
     @profile = Profile.new
-
   end
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.user = current_user
-    if @profile.save
-      redirect_to apartment_index_path
+    @profile.user_id = current_user
+    if @profile.save!
+      redirect_to apartments_path
     else
       render :new
     end
@@ -33,7 +36,7 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
-    redirect_to apartment_index_path
+    redirect_to apartments_path
   end
 
 
@@ -43,7 +46,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :user_id)
+    params.require(:profile).permit(:first_name, :last_name, :user_id, :date_of_birth, :phone_number, :description)
   end
 
 end
