@@ -8,19 +8,19 @@
       <h2>Reviews</h2>
       <!-- Between brackets : number of reviews-->
       <h3>Reviews from other guests</h3>
-      <% @profile.user.reviews each do |review| %>
+      <%# @profile.user.reviews.each do |review| %>
 
       <div class="review">
         <div> <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
-        <h3> <%= @profile.user.first_name %> </h3> </div>
+        <h3> <%#= @profile.user.first_name %> </h3> </div>
 
         <div class="review_content">
-        <%= @review.content %>
+        <%#= @review.content %>
         From Bergen, Norway
         <% # link_to review.apartment.name link %>
 
         </div>
-     <% end %>
+     <%# end %>
 <!--
 
         <div class="message-body">
@@ -36,8 +36,8 @@
       </div>
 
  -->
-       <%= render 'reviews/form' %>
-      <%= link_to 'Back', %>
+       <%# render 'reviews/form' %>
+      <%= link_to 'Back', root_path %>
     </div>
   </div>
 </div>
