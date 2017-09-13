@@ -21,5 +21,7 @@ class Apartment < ApplicationRecord
   validates :name, presence: true, length: { minimum: 8 }
   validates :description, presence: true
 
+  mount_uploader :photo, PhotoUploader
+
 end
 
