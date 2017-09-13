@@ -1,2 +1,73 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+
+<div class="flat-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%);">
+</div>
+
+<div class="profile-container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="profile">
+          <!-- Inject flat data in template -->
+        <div class="profile-box">
+          </div>
+          <div class="profile-description">
+            <h3>You're going to <%= @booking.apartment.city %></h3>
+
+
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<div class="info-container">
+  <h4>About this place</h4>
+   <p><%= @booking.apartment.description %></p>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        The Space
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Accommodates: <strong><%= @booking.apartment.number_of_beds%> persons</strong></li>
+          <li>Bathrooms: <strong><%= @booking.apartment.number_of_bathrooms %></strong></li>
+          <li>Beds: <strong><%= @booking.apartment.number_of_beds %></strong></li>
+        </ul>
+      </div>
+       <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Property type: <strong><%= @booking.apartment.apartment_type %></strong></li>
+          <li>Bedrooms: <strong><%= @booking.apartment.number_of_bedrooms %></strong></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        Amenities
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Wifi: <strong></strong></li>
+          <li>Welcome drink: <strong></strong></li>
+        </ul>
+      </div>
+       <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>TV: <strong></strong></li>
+          <li>Kitchen: <strong></strong></li>
+        </ul>
+      </div>
+
+
+
+    </div>
+</div>
+
+
+<!-- more atributes of the apartments -->
+
+
+
+

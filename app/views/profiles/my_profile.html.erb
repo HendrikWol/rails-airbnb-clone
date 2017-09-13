@@ -1,0 +1,27 @@
+
+
+<h1>Profile overview:</h1>
+
+<%= @profile.first_name %>
+<%= @profile.last_name %>
+<%= @profile.description %>
+<%= @profile.date_of_birth %>
+<%= @profile.phone_number %>
+
+<h1>Your trips:</h1>
+<ul>
+  <% @profile.user.bookings.each do |booking| %>
+  <br>
+  <br>
+  <strong><%= booking.apartment.name %></strong>
+    <li>
+    <%= booking.start_date %> till
+    <%= booking.end_date %>
+    </li>
+    <li>
+    <%= booking.apartment.price %>
+    </li>
+    <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
+  <% end %>
+</ul>
+

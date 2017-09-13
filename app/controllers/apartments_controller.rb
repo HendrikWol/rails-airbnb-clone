@@ -3,9 +3,21 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = Apartment.all
+     @apartments = Apartment.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
+    end
   end
 
   def show
+    @review = Review.new
+    @review.save
+
+    @apartment_coordinates = { lat: @apartment.latitude, lng: @apartment.longitude }
+    @booking = Booking.new
+
   end
 
   def new
@@ -14,9 +26,7 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
-    @apartment.user = current_user
-
-    raise
+    @apartment.user_id = current_user
     if @apartment.save
       redirect_to apartments_path
     else
@@ -44,6 +54,6 @@ class ApartmentsController < ApplicationController
   end
 
   def apartment_params
-    params.require(:apartment).permit(:name, :description, :address, :city, :country, :price, :apartment_type, :number_of_guests, :number_of_beds, :number_of_bedrooms, :number_of_bathrooms, :checkin_time, :checkout_time)
+    params.require(:apartment).permit(:name, :description, :address, :city, :country, :price, :apartment_type, :number_of_guests, :number_of_beds, :number_of_bedrooms, :number_of_bathrooms, :checkin_time, :checkout_time, :photo, :photo_cache)
   end
 end
