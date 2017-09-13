@@ -1,16 +1,12 @@
 <h1>Check the apartments available</h1>
 <% @apartments.each do |apartment| %>
-  <h2><%= apartment.name %></h2>
   <%= cl_image_tag apartment.photo, height: 300, width: 400, crop: :fill %>
-  <p><%= apartment.description %></p>
-  <p><%= apartment.apartment_type %></p>
-  <p><%= apartment.price %></p>
-  <p><%= apartment.number_of_guests %></p>
-  <p><%= apartment.number_of_beds %></p>
-  <p><%= apartment.number_of_bedrooms %></p>
-  <p><%= apartment.number_of_bathrooms %></p>
-  <p><%= apartment.checkin_time  %></p>
-  <p><%= apartment.checkout_time %></p>
+  <h3><%= apartment.name %></h3>
+  <p><strong>Description: </strong><%= apartment.description %></p>
+  <p><strong>Apartment type: </strong><%= apartment.apartment_type %></p>
+  <p><strong>Price per night: </strong><%= apartment.price %></p>
+  <p><strong>Beds: </strong><%= apartment.number_of_beds %></p>
+>>>>>>> master
 <p><%= link_to 'Show', apartment_path(apartment) %></p>
   <!-- more attributes of the apartment -->
 <% end %>
