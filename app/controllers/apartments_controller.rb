@@ -8,6 +8,7 @@ class ApartmentsController < ApplicationController
   def show
     @review = Review.new
     @review.save
+    @booking = Booking.new
   end
 
   def new
