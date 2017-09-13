@@ -20,7 +20,7 @@
       </div>
 
       <div class="col-xs-4 col-xs-offset-4">
-        <%= simple_form_for [@apartment, @booking], url: apartment_bookings_path(@apartment) do |f| %>
+        <%= simple_form_for [@apartment, @booking] do |f| %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
         <%= f.button :submit, method: :post %>
