@@ -1,6 +1,7 @@
 <h1>Check the apartments available</h1>
 <% @apartments.each do |apartment| %>
   <h2><%= apartment.name %></h2>
+  <%= cl_image_tag apartment.photo, height: 300, width: 400, crop: :fill %>
   <p><%= apartment.description %></p>
   <p><%= apartment.apartment_type %></p>
   <p><%= apartment.price %></p>
