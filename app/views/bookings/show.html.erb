@@ -11,7 +11,7 @@
           </div>
           <div class="profile-description">
             <h3>You're going to <%= @booking.apartment.city %></h3>
-
+              <%= cl_image_tag @booking.apartment.photo, height: 300, width: 400, crop: :fill %>
 
           </div>
         </div>
