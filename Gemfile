@@ -20,6 +20,7 @@ gem 'uglifier'
 gem 'devise'
 gem "country-select" #gem for selection countries on simple_form
 gem 'omniauth-facebook'
+gem 'cloudinary'
 
 group :development, :test do
   gem 'pry-byebug'
