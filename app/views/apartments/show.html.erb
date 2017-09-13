@@ -18,8 +18,20 @@
           </div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
-        <form action="#">
+
+      <div class="col-xs-4 col-xs-offset-4">
+        <%= simple_form_for [@apartment, @booking], url: apartment_bookings_path(@apartment) do |f| %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.button :submit, method: :post %>
+      <% end %>
+
+      </div>
+
+
+
+      <!-- <div class="col-xs-12 col-sm-6">
+        <form action="/apartments/{apartment_id}/bookings/create">
           <h4>Book this flat</h4>
           <div class="row">
             <div class="col-xs-6">
@@ -42,20 +54,13 @@
           </div>
           <input type="submit" class="btn btn-danger" value="Book it">
         </form>
-      </div>
+      </div> -->
   </div>
 </div>
 
 <div class="info-container">
   <h2>About this place</h2>
-  <p><%= @apartment.description %></p>
-
- <%= simple_form_for [@apartment, @review] do |f| %>
-    <%= f.input :rating %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-    <% end %>
-
+   <p><%= @apartment.description %></p>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-2">
@@ -92,7 +97,17 @@
           <li>Kitchen: <strong></strong></li>
         </ul>
       </div>
+
+
+
     </div>
+      <h4>Show ratings of this apartment:</h4>
+      <% @apartment.reviews.each do |review| %>
+
+      <%= review.rating %>
+      <%= review.content %>
+
+      <% end %>
 </div>
 
 <% content_for(:after_js) do %>

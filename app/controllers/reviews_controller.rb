@@ -6,7 +6,7 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    # @review = Review.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   # def new

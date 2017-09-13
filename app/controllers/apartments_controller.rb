@@ -13,7 +13,10 @@ class ApartmentsController < ApplicationController
   def show
     @review = Review.new
     @review.save
+
     @apartment_coordinates = { lat: @apartment.latitude, lng: @apartment.longitude }
+    @booking = Booking.new
+
   end
 
   def new
