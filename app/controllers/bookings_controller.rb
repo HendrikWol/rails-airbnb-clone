@@ -15,10 +15,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.apartment = @apartment
     @booking.status = "Pending"
-    @booking.start_date = @booking
     @booking.total_price = 0
     if @booking.save
-      redirect_to apartment_bookings_path(@booking), notice: 'Booking was successfully created.'
+      redirect_to show_profile_path, notice: 'Booking was successfully created.'
 
     else
       render :new

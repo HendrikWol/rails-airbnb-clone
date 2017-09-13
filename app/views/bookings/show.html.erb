@@ -10,7 +10,7 @@
         <div class="profile-box">
           </div>
           <div class="profile-description">
-            <p>You're going to <%= @apartment.city %></p>
+            <h3>You're going to <%= @booking.apartment.city %></h3>
 
 
           </div>
@@ -21,8 +21,8 @@
 </div>
 
 <div class="info-container">
-  <h2>About this place</h2>
-   <p><%= @apartment.description %></p>
+  <h4>About this place</h4>
+   <p><%= @booking.apartment.description %></p>
     <hr>
     <div class="row">
       <div class="col-xs-12 col-sm-2">
@@ -30,15 +30,15 @@
       </div>
       <div class="col-xs-12 col-sm-4">
         <ul class="list-unstyled">
-          <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
-          <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
-          <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
+          <li>Accommodates: <strong><%= @booking.apartment.number_of_beds%> persons</strong></li>
+          <li>Bathrooms: <strong><%= @booking.apartment.number_of_bathrooms %></strong></li>
+          <li>Beds: <strong><%= @booking.apartment.number_of_beds %></strong></li>
         </ul>
       </div>
        <div class="col-xs-12 col-sm-4">
         <ul class="list-unstyled">
-          <li>Property type: <strong></strong></li>
-          <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
+          <li>Property type: <strong><%= @booking.apartment.apartment_type %></strong></li>
+          <li>Bedrooms: <strong><%= @booking.apartment.number_of_bedrooms %></strong></li>
         </ul>
       </div>
     </div>

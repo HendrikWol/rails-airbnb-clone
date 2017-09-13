@@ -8,6 +8,7 @@ class ApartmentsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
+    end
   end
 
   def show
