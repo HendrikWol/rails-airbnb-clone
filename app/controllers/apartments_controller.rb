@@ -3,11 +3,20 @@ class ApartmentsController < ApplicationController
 
   def index
     @apartments = Apartment.all
+     @apartments = Apartment.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
+      marker.lat apartment.latitude
+      marker.lng apartment.longitude
   end
 
   def show
     @review = Review.new
     @review.save
+
+    @apartment_coordinates = { lat: @apartment.latitude, lng: @apartment.longitude }
+    @booking = Booking.new
+
   end
 
   def new

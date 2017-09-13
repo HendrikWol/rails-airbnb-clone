@@ -4,7 +4,9 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
   end
-
+  def my_profile
+    @profile = Profile.find_by(user: current_user)
+  end
   def show
     @profile = Profile.find(params[:id])
   end
@@ -15,7 +17,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    @profile.user_id = current_user
+    @profile.user = current_user
     if @profile.save!
       redirect_to apartments_path
     else
@@ -42,7 +44,7 @@ class ProfilesController < ApplicationController
 
   private
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(params[:id])
   end
 
   def profile_params
