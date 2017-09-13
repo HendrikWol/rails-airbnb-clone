@@ -7,7 +7,8 @@
   <p><strong>Price per night: </strong><%= apartment.price %></p>
   <p><strong>Beds: </strong><%= apartment.number_of_beds %></p>
 
-<p><%= link_to 'Show', apartment_path(apartment) %></p>
+<p class="btn btn-primary" style="background-color: #ff5961;
+border-color: #ff5961; border-radius: 4px; margin: 10px 0;"><%= link_to 'Show', apartment_path(apartment) %></p>
   <!-- more attributes of the apartment -->
 <% end %>
 
