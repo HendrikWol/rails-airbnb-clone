@@ -2,8 +2,7 @@ class ApartmentsController < ApplicationController
    before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @apartments = Apartment.all
-     @apartments = Apartment.where.not(latitude: nil, longitude: nil)
+    @apartments = Apartment.all.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
