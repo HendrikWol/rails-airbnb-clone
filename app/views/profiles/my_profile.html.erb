@@ -1,35 +1,45 @@
 
 
-<h1>Profile overview:</h1>
 
 <div class="col-xs-12 col-sm-4">
   <ul class="list-unstyled">
+    <h1>Profile overview:</h1>
     <li><strong>First name: </strong><%= @profile.first_name %></li>
     <li><strong>Last name: </strong><%= @profile.last_name %></li>
     <li><strong>Description: </strong><%= @profile.description %></li>
     <li><strong>Date of birth: </strong><%= @profile.date_of_birth %></li>
     <li><strong>Phone number: </strong><%= @profile.phone_number %></li>
   </ul>
-
-
-
-  <h1>Your trips:</h1>
-<ul>
-  <% @profile.user.bookings.each do |booking| %>
-  <br>
-  <br>
-  <strong><%= booking.apartment.name %></strong>
-    <li>
-    <%= booking.start_date %> till
-    <%= booking.end_date %>
-    </li>
-    <li>
-    <%= booking.apartment.price %>
-    </li>
-    <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
-  <% end %>
-</ul>
 </div>
+
+
+<div class="col-xs-12 col-sm-4">
+  <ul class="list-unstyled">
+    <h1>Your trips:</h1>
+    <ul>
+      <% @profile.user.bookings.each do |booking| %>
+
+      <strong><%= booking.apartment.name %></strong>
+      <li>
+        <%= booking.start_date %> till
+        <%= booking.end_date %>
+      </li>
+      <li>
+        <%= booking.apartment.price %>
+      </li>
+      <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">
+    <ul class="list-unstyled">
+      <h1>Your listings:</h1>
+      <h3>Beautiful apartment in Gracia</h3>
+      <%= image_tag "room1.jpg", width: 200, height: 150%>
+    </ul>
+  </div>
+
 
 
 
