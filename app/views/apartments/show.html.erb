@@ -5,7 +5,9 @@
   <div class="row">
     <div class="col-xs-12 col-md-8">
       <div class="profile">
-        <!-- Inject flat data in template -->
+
+            <p><strong>€<%= @apartment.price %></strong> per night</p>
+
 
         <ul class="list-inline" style="margin-top: 15px;">
           <li>By <%= @apartment.user.profile %></li>
@@ -32,14 +34,63 @@
     </div>
 
 
+<<<<<<< HEAD
+=======
+      </div>
+
+>>>>>>> master
   </div>
 
+<<<<<<< HEAD
   <div class="row">
     <div class="col-sm-8 info-container">
        <hr>
        <h2>About</h2>
        <p><%= @apartment.description %></p>
      </div>
+=======
+
+
+<div class="info-container">
+  <h2>About this place</h2>
+   <p><%= @apartment.description %></p>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        The Space
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
+          <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
+          <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
+        </ul>
+      </div>
+       <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Property type: <strong></strong></li>
+          <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        Amenities
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>Wifi: <strong></strong></li>
+          <li>Welcome drink: <strong></strong></li>
+        </ul>
+      </div>
+       <div class="col-xs-12 col-sm-4">
+        <ul class="list-unstyled">
+          <li>TV: <strong></strong></li>
+          <li>Kitchen: <strong></strong></li>
+        </ul>
+      </div>
+>>>>>>> master
 
 
   </div>

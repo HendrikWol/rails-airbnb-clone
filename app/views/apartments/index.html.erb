@@ -1,35 +1,44 @@
-<h1>Check the apartments available</h1>
-<% @apartments.each do |apartment| %>
-  <h3><%= apartment.name %></h3>
-  <%= cl_image_tag apartment.photo, height: 300, width: 400, crop: :fill %>
-  <p><strong>Description: </strong><%= apartment.description %></p>
-  <p><strong>Apartment type: </strong><%= apartment.apartment_type %></p>
-  <p><strong>Price per night: </strong><%= apartment.price %></p>
-  <p><strong>Beds: </strong><%= apartment.number_of_beds %></p>
 
-<p class="btn btn-primary" style="background-color: #ff5961;
-border-color: #ff5961; border-radius: 4px; margin: 10px 0;"><%= link_to 'Show', apartment_path(apartment) %></p>
-  <!-- more attributes of the apartment -->
-<% end %>
+<h3 class="text-center">Check the apartments available</h3>
+<div class="main-container">
+  <div class="row">
+    <% @apartments.each do |apartment| %>
+    <div class="col-xs-12 col-sm-12 col-md-6">
 
+      <%= link_to apartment_path(apartment) do %>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
+      <div class="card" style="background-image: url('<%= cl_image_path apartment.photo, height: 300, width: 400, crop: :fill if apartment.photo? %>')">
+        <img class="card-user" src="http://static.goal.com/4321800/4321812_news.jpg">
+      </div>
+      <% end %>
+
+      <div class="card-description">
+        <h5><%= link_to apartment.name, apartment_path(apartment) %> | <%= apartment.city %></h5>
+        <!--   <p>Description: <%= apartment.description %></p> -->
+        <p><%= apartment.apartment_type %> | €<%= apartment.price %> | Beds:<%= apartment.number_of_beds %> </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="map" style="width: 100%; height: 600px;"></div>
+</div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function() {
+markers = handler.addMarkers(<%= raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+if (markers.length == 0) {
+handler.getMap().setZoom(2);
+} else if (markers.length == 1) {
+handler.getMap().setZoom(14);
+}
+});
+});
+<% end %>
 <% end %>
 
