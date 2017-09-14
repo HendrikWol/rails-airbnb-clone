@@ -7,6 +7,7 @@ class Apartment < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_one :amenity
+  belongs_to :user
 
   # validates :address, presence: true
   # validates :city, presence: true
