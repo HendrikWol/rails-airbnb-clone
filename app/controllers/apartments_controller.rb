@@ -13,6 +13,7 @@ class ApartmentsController < ApplicationController
 
   def my_listings
     @apartments = current_user.apartments
+    @bookings = Booking.where(owner_id: current_user.id)
   end
 
   def show

@@ -1,6 +1,7 @@
 <h1>Your listings:</h1>
 
-<div class="container">
+  <%= "You dont have any listings yet, create your first listing" if @apartments.length == 0 %>
+
   <% @apartments.each do |apartment| %>
 
   <h3><strong><%= apartment.name %></strong></h3>
@@ -13,5 +14,19 @@
   border-color: #ff5961; border-radius: 4px; margin: 10px 0;"><%= link_to 'Show', apartment_path(apartment) %></p>
   <% end %>
 </ul>
-</div>
 
+
+<h1>Booking requests:</h1>
+
+  <% @bookings.each do |booking| %>
+  <p><%= booking.user.profile.first_name %> made a request to book your apartment</p>
+  <strong><%= booking.apartment.name %></strong>
+  <li>
+    <%= booking.start_date %> till
+    <%= booking.end_date %>
+  </li>
+  <li>
+    <%= booking.apartment.price %>
+  </li>
+  <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
+  <% end %>
