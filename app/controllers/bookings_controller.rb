@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @booking.apartment = @apartment
     @booking.status = "Pending"
     @booking.total_price = 0
+    @booking.owner_id = @booking.apartment.user.id
     if @booking.save
       redirect_to show_profile_path, notice: 'Booking was successfully created.'
 
