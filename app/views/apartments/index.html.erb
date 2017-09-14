@@ -1,5 +1,5 @@
 
-<h4 class="text-center">Check the apartments available</h4>
+<h2 class="text-center">Check the apartments available</h2>
 <div class="main-container">
   <div class="row">
     <% @apartments.each do |apartment| %>
@@ -10,7 +10,7 @@
       <div class="card-description">
       <h5><%= link_to apartment.name, apartment_path(apartment) %></h5>
       <!--   <p>Description: <%= apartment.description %></p> -->
-      <p><%= apartment.apartment_type %> | <%= apartment.price %> | Beds:<%= apartment.number_of_beds %> </p>
+      <p><%= apartment.apartment_type %> | $<%= apartment.price %> | Beds:<%= apartment.number_of_beds %> </p>
       </div>
     </div>
     <% end %>
