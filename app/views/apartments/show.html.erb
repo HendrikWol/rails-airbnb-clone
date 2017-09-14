@@ -6,7 +6,7 @@
     <div class="col-xs-12 col-md-8">
       <div class="profile">
 
-            <p><strong>€<%= @apartment.price %></strong> per night</p>
+        <p><strong>€<%= @apartment.price %></strong> per night</p>
 
 
         <ul class="list-inline" style="margin-top: 15px;">
@@ -14,113 +14,58 @@
           <li>In <%= @apartment.city%>,</li>
           <li><%=@apartment.country%></li>
         </ul>
-       <h1><%= @apartment.name %></h1>
+        <h1><%= @apartment.name %></h1>
 
-      <ul class="list-inline" style="margin-left: 0px;">
-        <li><i class="fa fa-home" aria-hidden="true"> </i><%= @apartment.apartment_type%></li>
-        <li><i class="fa fa-users" aria-hidden="true"></i> <strong><%= @apartment.number_of_guests %></strong> guests</li>
-        <li><i class="fa fa-bath" aria-hidden="true"></i> <strong><%= @apartment.number_of_bathrooms %></strong> Bathrooms</li>
-        <li><i class="fa fa-bed" aria-hidden="true"></i> <strong><%= @apartment.number_of_beds %></strong> Beds</li>
-        <li><strong><%= @apartment.number_of_bedrooms %></strong> Bedrooms</li>
-      </ul>
+        <ul class="list-inline" style="margin-left: 0px;">
+          <li><i class="fa fa-home" aria-hidden="true"> </i><%= @apartment.apartment_type%></li>
+          <li><i class="fa fa-users" aria-hidden="true"></i> <strong><%= @apartment.number_of_guests %></strong> guests</li>
+          <li><i class="fa fa-bath" aria-hidden="true"></i> <strong><%= @apartment.number_of_bathrooms %></strong> Bathrooms</li>
+          <li><i class="fa fa-bed" aria-hidden="true"></i> <strong><%= @apartment.number_of_beds %></strong> Beds</li>
+          <li><strong><%= @apartment.number_of_bedrooms %></strong> Bedrooms</li>
+        </ul>
       </div>
     </div>
-      <div class="col-md-4 col-xs-12 bookbox">
-        <%= simple_form_for [@apartment, @booking] do |f| %>
-        <%= f.input :start_date, label: 'Start date' %>
-        <%= f.input :end_date, label: "End date" %>
-        <%= f.button :submit, method: :post, class: "btn btn-primary" %>
-        <% end %>
+    <div class="col-md-4 col-xs-12 bookbox">
+      <%= simple_form_for [@apartment, @booking] do |f| %>
+      <%= f.input :start_date, label: 'Start date' %>
+      <%= f.input :end_date, label: "End date" %>
+      <%= f.button :submit, method: :post, class: "btn btn-primary" %>
+      <% end %>
     </div>
-
-
-<<<<<<< HEAD
-=======
-      </div>
-
->>>>>>> master
   </div>
 
-<<<<<<< HEAD
   <div class="row">
     <div class="col-sm-8 info-container">
-       <hr>
-       <h2>About</h2>
-       <p><%= @apartment.description %></p>
-     </div>
-=======
-
-
-<div class="info-container">
-  <h2>About this place</h2>
-   <p><%= @apartment.description %></p>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        The Space
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
-          <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
-          <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
-        </ul>
-      </div>
-       <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Property type: <strong></strong></li>
-          <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
-        </ul>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        Amenities
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Wifi: <strong></strong></li>
-          <li>Welcome drink: <strong></strong></li>
-        </ul>
-      </div>
-       <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>TV: <strong></strong></li>
-          <li>Kitchen: <strong></strong></li>
-        </ul>
-      </div>
->>>>>>> master
-
-
-  </div>
-
-<hr>
- <h3>Amenities</h3>
-<div class="row">
-  <div class="col-xs-12 col-sm-4">
-    <ul class="list-unstyled">
-      <li><i class="fa fa-wifi" aria-hidden="true"></i> <strong></strong></li>
-      <li><i class="fa fa-glass" aria-hidden="true"></i><strong></strong></li>
-    </ul>
-  </div>
-  <div class="col-xs-12 col-sm-4">
-    <ul class="list-unstyled">
-      <li><i class="fa fa-television" aria-hidden="true"></i><strong></strong></li>
-      <li>Kitchen: <strong></strong></li>
-    </ul>
-  </div>
-
-
-
+     <hr>
+     <h2>About</h2>
+     <p><%= @apartment.description %></p>
+   </div>
 </div>
-<h4>Show ratings of this apartment:</h4>
-<% @apartment.reviews.each do |review| %>
 
-<%= review.rating %>
-<%= review.content %>
+   <hr>
+   <h3>Amenities</h3>
+   <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li><i class="fa fa-wifi" aria-hidden="true"></i> <strong></strong></li>
+        <li><i class="fa fa-glass" aria-hidden="true"></i><strong></strong></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li><i class="fa fa-television" aria-hidden="true"></i><strong></strong></li>
+        <li>Kitchen: <strong></strong></li>
+      </ul>
+    </div>
+  </div>
 
-<% end %>
+  <h4>Show ratings of this apartment:</h4>
+  <% @apartment.reviews.each do |review| %>
+
+  <%= review.rating %>
+  <%= review.content %>
+
+  <% end %>
 </div>
 
 <% content_for(:after_js) do %>
