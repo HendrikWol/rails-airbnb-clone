@@ -4,9 +4,11 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
   end
+
   def my_profile
     @profile = current_user.profile
   end
+
   def show
     @profile = Profile.find(params[:id])
   end
@@ -29,11 +31,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-      if @profile.update(profile_params)
-        format.html { redirect_to @restaurant, notice: 'Profile was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @profile.update(profile_params)
+      redirect_to show_profile_path, notice: 'Profile was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -44,7 +46,7 @@ class ProfilesController < ApplicationController
 
   private
   def set_profile
-    @profile = Profile.find_by(params[:id])
+    @profile = Profile.find(params[:id])
   end
 
   def profile_params

@@ -8,12 +8,12 @@
       <div class="profile">
           <!-- Inject flat data in template -->
         <div class="profile-box">
-          <p><%= @apartment.name %></p>
+          <h2><%= @apartment.name %></h2>
           <%= cl_image_tag @apartment.photo, height: 300, width: 400, crop: :fill %>
           </div>
           <div class="profile-description">
-            <h1><%= @apartment.description %></h1>
-            <p><%= @apartment.city %></p>
+            <h4><strong><%= @apartment.city %></strong></h4>
+            <p><%= @apartment.description %></p>
 
 
           </div>
