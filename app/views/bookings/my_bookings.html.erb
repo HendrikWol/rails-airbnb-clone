@@ -1,7 +1,7 @@
+
 <h1>Booking requests:</h1>
 
   <% @bookings.each do |booking| %>
-
   <p><strong><%= booking.user.profile.first_name %></strong> made a request to book your apartment</p>
   <p><strong>Listing: </strong><%= booking.apartment.name %> in <%= booking.apartment.city%></p>
   <p><strong>From: </strong>
@@ -15,11 +15,22 @@
       </p>
 
       <p>
-        <strong>Status: </strong> XXX
+        <strong>Status: </strong> <%= booking.status %>
       </p>
+
 
 
   <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
   <br>
+  <% unless booking.status == 'Accepted' %>
+      <p class="btn btn-primary" style="background-color: green;
+  border-color: green; border-radius: 4px; margin: 10px 0;">
+    <%= link_to 'Accept', change_status_path(status: 'Accepted', id: booking)%>
+    </p>
+  <p class="btn btn-primary" style="background-color: #ff5961;
+  border-color: #ff5961; border-radius: 4px; margin: 10px 0;">
+    <%= link_to 'Decline', change_status_path(status: 'Declined', id: booking)%>
+  </p>
+  <% end %>
   <br>
   <% end %>

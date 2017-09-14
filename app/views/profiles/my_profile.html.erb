@@ -4,6 +4,7 @@
 <div class="container">
   <ul class="list-unstyled">
     <h1>Profile overview:</h1>
+    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
     <li><strong>First name: </strong><%= @profile.first_name %></li>
     <li><strong>Last name: </strong><%= @profile.last_name %></li>
     <li><strong>Description: </strong><%= @profile.description %></li>
@@ -11,34 +12,6 @@
     <li><strong>Phone number: </strong><%= @profile.phone_number %></li>
   </ul>
 
-
-
-
-  <ul class="list-unstyled">
-
-    <h1>You requested:</h1>
-
-      <% @profile.user.bookings.each do |booking| %>
-
-      <p><strong>Listing: </strong><%= booking.apartment.name %> in <%= booking.apartment.city%></p>
-      <p><strong>From: </strong>
-        <%= booking.start_date %><strong> until: </strong>
-        <%= booking.end_date %>
-      </p>
-      <p><strong>Number of nights: </strong><%= (booking.end_date - booking.start_date).to_i %></p>
-    </p>
-      <p>
-        <strong>Total price: </strong>€<%= (booking.apartment.price * ((booking.end_date - booking.start_date).to_i))%>
-      </p>
-
-      <p>
-        <strong>Status: </strong> XXX
-      </p>
-      <%= link_to 'See booking', apartment_booking_path(booking.apartment, booking), class: "btn btn-primary" %>
-      <br>
-      <br>
-      <% end %>
-</div>
 
 
 

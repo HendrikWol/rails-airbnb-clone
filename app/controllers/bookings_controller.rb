@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [ :show, :edit, :update, :destroy]
+  before_action :set_booking, only: [ :show, :edit, :update, :destroy, :change_status]
   before_action :set_apartment, only: [ :create, :destroy]
 
   def new
@@ -7,7 +7,13 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @bookings = Booking.where(owner_id: current_user.id)
+    @bookings = Booking.where(owner_id: current_user.id).where.not(status: 'Declined')
+  end
+
+
+  def my_trips
+    @profile = current_user.profile
+    @bookings = @profile.user.bookings.where.not(status: "Declined")
   end
 
   def show
@@ -18,12 +24,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.apartment = @apartment
-    @booking.status = "Pending"
-    @booking.total_price = 0
     @booking.owner_id = @booking.apartment.user.id
     if @booking.save
-      redirect_to show_profile_path, notice: 'Booking was successfully created.'
-
+      redirect_to show_trips_path, notice: 'Booking was successfully created.'
     else
       render :new
     end
@@ -32,6 +35,12 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     redirect_to apartment_path(@apartment)
+  end
+
+  def change_status
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to show_trips_path
   end
 
   private
