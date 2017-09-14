@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="row">
     <div class="profile col-xs-12 col-md-4">
@@ -45,6 +46,23 @@
 
   </div>
 </div>
+=======
+
+
+
+<div class="container">
+  <ul class="list-unstyled">
+    <h1>Profile overview:</h1>
+    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
+    <li><strong>First name: </strong><%= @profile.first_name %></li>
+    <li><strong>Last name: </strong><%= @profile.last_name %></li>
+    <li><strong>Description: </strong><%= @profile.description %></li>
+    <li><strong>Date of birth: </strong><%= @profile.date_of_birth %></li>
+    <li><strong>Phone number: </strong><%= @profile.phone_number %></li>
+  </ul>
+
+
+>>>>>>> master
 
 
 
