@@ -1,0 +1,24 @@
+#map {
+  height: 100vh;
+  flex: 0 0 550px;
+  position: sticky !important;
+  right: 0;
+  top: 0 !important;
+}
+
+@media(max-width: 830px) {
+  #map {
+   flex: 0 0 0px; /* re-define your grid for mobile and tablet */
+  }
+}
+
+// @media(max-width: 992px) {
+  // #map {
+//     flex: 0 0 300px;
+//   }
+
+// }
+// xs: Extra small devices (Phones < 768px)
+// sm: Small devices (Tablets > 768px)
+// md: Medium devices (> 992px)
+// lg: Large devices (Desktops > 1200px)

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
+
   def index
     @apartment = Apartment.find(params[:apartment_id])
     @reviews = @apartment.reviews
@@ -33,10 +34,9 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def update
     if @review.update(review_params)
-        format.html { redirect_to @review.apartment, notice: 'Review was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+      format.html { redirect_to @review.apartment, notice: 'Review was successfully updated.' }
+    else
+      format.html { render :edit }
     end
   end
 
@@ -47,11 +47,11 @@ before_action :set_review, only: [:show, :edit, :update, :destroy]
   private
 
  def set_review
- @review = Review.find(params[:id])
+   @review = Review.find(params[:id])
  end
 
  def review_params
- params.require(:review).permit(:rating, :content)
+   params.require(:review).permit(:rating, :content)
  end
 
 end
