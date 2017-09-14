@@ -3,14 +3,16 @@
 <div class="main-container">
   <div class="row">
     <% @apartments.each do |apartment| %>
-    <div class="col-xs-12 col-sm-6">
+    <div class="col-xs-12 col-sm-12 col-md-6">
       <div class="card" style="background-image: url('<%= cl_image_path apartment.photo, height: 300, width: 400, crop: :fill if apartment.photo? %>')">
+        <div class="card-link"><%= link_to apartment_path(apartment) %>
+        </div>
         <img class="card-user" src="http://static.goal.com/4321800/4321812_news.jpg">
       </div>
       <div class="card-description">
-      <h5><%= link_to apartment.name, apartment_path(apartment) %></h5>
+      <h5><%= link_to apartment.name, apartment_path(apartment) %> | <%= apartment.city %></h5>
       <!--   <p>Description: <%= apartment.description %></p> -->
-      <p><%= apartment.apartment_type %> | $<%= apartment.price %> | Beds:<%= apartment.number_of_beds %> </p>
+      <p><%= apartment.apartment_type %> | €<%= apartment.price %> | Beds:<%= apartment.number_of_beds %> </p>
       </div>
     </div>
     <% end %>
