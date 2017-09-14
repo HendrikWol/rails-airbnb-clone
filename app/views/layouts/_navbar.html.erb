@@ -4,18 +4,45 @@
     <%= image_tag "logo.jpg" %>
   </a>
 
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <a><%= link_to 'Host', new_apartment_path, class: "navbar-wagon-item navbar-wagon-link" %></a>
-    <a><%= link_to 'Trips', show_profile_path, class: "navbar-wagon-item navbar-wagon-link" %></a>
-    <a><%= link_to 'Profile', show_profile_path, class: "navbar-wagon-item navbar-wagon-link" %></a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+  <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Where to go?">
+    </div>
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
+
+  <!-- Right Navigation -->
+
+
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+    <div class="dropdown">
+      <a><%= link_to 'Trips', show_profile_path, class: "navbar-wagon-item navbar-wagon-link" %></a>
+      <a><%= link_to 'Profile', show_profile_path, class: "navbar-wagon-item navbar-wagon-link" %></a>
+      <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
+    </div>
+
+    <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="dropdown navbar-wagon-item navbar-wagon-link ">
+    <div class="dropdown-toggle" data-toggle="dropdown" role="button">Host</div>
+    <ul class="dropdown-menu">
+    <% if current_user %>
+      <li><%= link_to 'Add apartment', new_apartment_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <li><%= link_to 'Edit profile', edit_profile_path(current_user.profile), class: "navbar-wagon-item navbar-wagon-link" if current_user.profile %></li>
+      <li><%= link_to 'My listings', show_listings_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <li role="separator" class="divider"></li>
+      <li><%= link_to 'Your reservations', new_apartment_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <li><%= link_to 'Your reviews', new_apartment_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <li role="separator" class="divider"></li>
+  <% end %>
+    </ul>
+ </div>
+ </div>
 
     <!-- Profile picture with dropdown list -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+        <img src="https://kitt.lewagon.com/placeholder/users/hendrikwol" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><%= link_to 'Profile', show_profile_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
 
