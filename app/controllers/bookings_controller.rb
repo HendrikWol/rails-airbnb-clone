@@ -6,6 +6,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def my_bookings
+    @bookings = Booking.where(owner_id: current_user.id)
+  end
+
   def show
 
   end
