@@ -1,0 +1,17 @@
+<h1>Your listings:</h1>
+
+<div class="container">
+  <% @apartments.each do |apartment| %>
+
+  <h3><strong><%= apartment.name %></strong></h3>
+  <%= cl_image_tag apartment.photo, height: 300, width: 400, crop: :fill %>
+  <br>
+  <br>
+  <p><%= apartment.description %></p>
+
+  <p class="btn btn-primary" style="background-color: #ff5961;
+  border-color: #ff5961; border-radius: 4px; margin: 10px 0;"><%= link_to 'Show', apartment_path(apartment) %></p>
+  <% end %>
+</ul>
+</div>
+

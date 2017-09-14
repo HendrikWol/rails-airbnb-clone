@@ -2,12 +2,17 @@ class ApartmentsController < ApplicationController
    before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   def index
+
     @apartments = Apartment.all.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
       marker.lat apartment.latitude
       marker.lng apartment.longitude
     end
+  end
+
+  def my_listings
+    @apartments = current_user.apartments
   end
 
   def show
@@ -25,7 +30,7 @@ class ApartmentsController < ApplicationController
 
   def create
     @apartment = Apartment.new(apartment_params)
-    @apartment.user_id = current_user
+    @apartment.user = current_user
     if @apartment.save
       redirect_to apartments_path
     else
