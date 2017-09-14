@@ -1,96 +1,94 @@
-
-<div class="flat-banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%);">
+<div class="banner" style="background-image: url('<%= cl_image_path @apartment.photo %>');">
 </div>
 
-<div class="profile-container">
+<div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-6">
       <div class="profile">
-          <!-- Inject flat data in template -->
+        <!-- Inject flat data in template -->
         <div class="profile-box">
-          <p><%= @apartment.name %></p>
-          <%= cl_image_tag @apartment.photo, height: 300, width: 400, crop: :fill %>
-          </div>
-          <div class="profile-description">
-            <h1><%= @apartment.description %></h1>
-            <p><%= @apartment.city %></p>
-
-
-          </div>
         </div>
+        <ul class="list-inline" style="margin-top: 15px;">
+          <li>By <%=link_to @profile.first_name, profile_path %></li>
+          <li> In <%= @apartment.city%>,</li>
+          <li><%=@apartment.country%></li>
+        </ul>
+        <hr>
       </div>
-
-      <div class="col-xs-4 col-xs-offset-4">
-        <%= simple_form_for [@apartment, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.button :submit, method: :post %>
-      <% end %>
-
-      </div>
+    </div>
   </div>
-</div>
 
-<div class="info-container">
-  <h2>About this place</h2>
+ <div class="row">
+  <div class="info-container">
+   <h1><%= @apartment.name %></h1>
    <p><%= @apartment.description %></p>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        The Space
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
-          <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
-          <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
-        </ul>
-      </div>
-       <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Property type: <strong></strong></li>
-          <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
-        </ul>
-      </div>
+
+   <div class="col-xs-4 col-xs-offset-4">
+    <%= simple_form_for [@apartment, @booking] do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.button :submit, method: :post, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+    <div class="col-xs-12 col-sm-2">
+      The Space
     </div>
-    <hr>
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        Amenities
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>Wifi: <strong></strong></li>
-          <li>Welcome drink: <strong></strong></li>
-        </ul>
-      </div>
-       <div class="col-xs-12 col-sm-4">
-        <ul class="list-unstyled">
-          <li>TV: <strong></strong></li>
-          <li>Kitchen: <strong></strong></li>
-        </ul>
-      </div>
-
-
-
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li>Accommodates: <strong><%= @apartment.apartment_type %></strong></li>
+        <li>Bathrooms: <strong><%= @apartment.number_of_bathrooms %></strong></li>
+        <li>Beds: <strong><%= @apartment.number_of_beds %></strong></li>
+      </ul>
     </div>
-      <h4>Show ratings of this apartment:</h4>
-      <% @apartment.reviews.each do |review| %>
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li>Property type: <strong></strong></li>
+        <li>Bedrooms: <strong><%= @apartment.number_of_bedrooms %></strong></li>
+      </ul>
+    </div>
+  </div>
 
-      <%= review.rating %>
-      <%= review.content %>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      Amenities
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li>Wifi: <strong></strong></li>
+        <li>Welcome drink: <strong></strong></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li>TV: <strong></strong></li>
+        <li>Kitchen: <strong></strong></li>
+      </ul>
+    </div>
 
-      <% end %>
+
+
+  </div>
+  <h4>Show ratings of this apartment:</h4>
+  <% @apartment.reviews.each do |review| %>
+
+  <%= review.rating %>
+  <%= review.content %>
+
+  <% end %>
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var coord = <%= raw @flat_coordinates.to_json %>;
-      alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(document).ready(function() {
+var coord = <%= raw @flat_coordinates.to_json %>;
+alert('Flat coordinates are ' + coord.lat + ', ' + coord.lng);
+});
 <% end %>
+<% end %>
+
 <!-- more atributes of the apartments -->
 
 

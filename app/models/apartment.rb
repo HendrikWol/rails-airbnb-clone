@@ -1,5 +1,5 @@
 class Apartment < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
