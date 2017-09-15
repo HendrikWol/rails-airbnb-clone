@@ -21,7 +21,6 @@ class ApartmentsController < ApplicationController
 
     @apartment_coordinates = { lat: @apartment.latitude, lng: @apartment.longitude }
     @booking = Booking.new
-
   end
 
   def new
