@@ -25,7 +25,7 @@
           <p><%= @apartment.description %></p>
 
           <ul class="list-inline" style="margin-top: 15px;">
-            <li>By <%= @apartment.user.profile.first_name if @apartment.user %></li>
+            <li>By <%= @apartment.user.profile.first_name if @apartment.user.profile %></li>
             <li>In <%= @apartment.city%>,</li>
             <li><%=@apartment.country%></li>
           </ul>
