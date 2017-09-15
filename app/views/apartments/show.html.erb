@@ -8,7 +8,6 @@
 
           <!-- Inject flat data in template -->
         <div class="profile-box">
-          <%= cl_image_tag @apartment.photo, height: 300, width: 400, crop: :fill %>
           </div>
           <div class="profile-description">
           <h2><strong><%= @apartment.name %></strong></h2>
@@ -16,13 +15,8 @@
             <p><strong>€<%= @apartment.price %></strong> per night</p>
             <p><%= @apartment.description %></p>
 
-
-
-        <p><strong>€<%= @apartment.price %></strong> per night</p>
-
-
         <ul class="list-inline" style="margin-top: 15px;">
-          <li>By <%= @apartment.user.profile %></li>
+          <li>By <%= @apartment.user.profile.first_name if @apartment.user %></li>
           <li>In <%= @apartment.city%>,</li>
           <li><%=@apartment.country%></li>
         </ul>

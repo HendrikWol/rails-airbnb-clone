@@ -38,6 +38,8 @@
 
 
     <!-- Profile picture with dropdown list -->
+
+    <% if user_signed_in? %>
     <div class="navbar-wagon-item">
       <div class="dropdown">
         <img src="https://kitt.lewagon.com/placeholder/users/hendrikwol" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
@@ -48,6 +50,9 @@
         </ul>
       </div>
     </div>
+    <% end %>
+
+
   </div>
 
   <!-- Dropdown appearing on mobile only -->
