@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:create, :new]
 
   def index
     @apartment = Apartment.find(params[:apartment_id])
@@ -10,20 +11,21 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def new
+    @review = Review.new
+  end
+
   def create
     @review = Review.new(review_params)
-    @apartment = Apartment.find(params[:apartment_id])
-    # @review.appartment = current_appartment
-
-    # @review.user_id = current_user
-    @review.apartment = @apartment
+    @review.booking = @booking
+    @apartment = @booking.apartment
+    @review.apartment_id = @apartment.id
     if @review.save
       redirect_to apartment_path(@apartment)
     else
       render :new
     end
   end
-
 
   def edit
   end
@@ -44,6 +46,10 @@ class ReviewsController < ApplicationController
 
  def set_review
    @review = Review.find(params[:id])
+ end
+
+ def set_booking
+   @booking = Booking.find(params[:booking_id])
  end
 
  def review_params

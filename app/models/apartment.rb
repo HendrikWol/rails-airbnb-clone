@@ -24,5 +24,9 @@ class Apartment < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  def reviewed?
+    self.reviews.any?
+  end
+
 end
 
