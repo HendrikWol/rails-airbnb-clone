@@ -1,3 +1,4 @@
+
 <div class="banner" style="background-image: url('<%= cl_image_path @apartment.photo %>');">
 </div>
 
@@ -11,7 +12,12 @@
           </div>
           <div class="profile-description">
           <h2><strong><%= @apartment.name %></strong></h2>
-            <h4><%= @apartment.city %>, <%= @apartment.country %></h4>
+            <h4><%= @apartment.city %>, <%= @apartment.country %><% @average.to_i.times do  %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        <% end %>
+        <% (5 - @average.to_i).times do  %>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end %></h4>
             <p><strong>€<%= @apartment.price %></strong> per night</p>
             <p><%= @apartment.description %></p>
 
@@ -53,40 +59,59 @@
    <div class="row">
     <div class="col-xs-12 col-sm-4">
       <ul class="list-unstyled">
-        <li><i class="fa fa-wifi" aria-hidden="true"></i> <strong></strong></li>
-        <li><i class="fa fa-glass" aria-hidden="true"></i><strong></strong></li>
+        <li><i class="fa fa-wifi" aria-hidden="true"></i>Wifi</li>
+        <br>
+        <li><i class="fa fa-glass" aria-hidden="true"></i>Welcome drink</li>
+        <br>
+        <li><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i>Heating</li>
       </ul>
     </div>
 
     <div class="col-xs-12 col-sm-4">
       <ul class="list-unstyled">
-        <li><i class="fa fa-television" aria-hidden="true"></i><strong></strong></li>
-        <li>Kitchen: <strong></strong></li>
+        <li><i class="fa fa-television" aria-hidden="true"></i> TV</li>
+        <br>
+        <li><i class="fa fa-cutlery" aria-hidden="true"></i> Kitchen</li>
+        <br>
+        <li style="text-decoration: line-through;"><i class="fa fa-wheelchair" aria-hidden="true"></i> Handicap access</li>
+      </ul>
+    </div>
+
+    <div class="col-xs-12 col-sm-4">
+      <ul class="list-unstyled">
+        <li style="text-decoration: line-through;"><i class="fa fa-paw" aria-hidden="true"></i>Pet's allowed</li>
+        <br>
+        <li><i class="fa fa-umbrella" aria-hidden="true"></i> Umbrella</li>
+        <br>
+        <li style="text-decoration: line-through;"><i class="fa fa-bicycle" aria-hidden="true"></i> Bicycle</li>
       </ul>
     </div>
   </div>
 
-  <h4>Show ratings of this apartment:</h4>
-  <% @apartment.reviews.each do |review| %>
+  <hr>
 
-  <%= review.rating %>
-  <%= review.content %>
-
-  <% end %>
-</div>
-
-
-    <h4>Show ratings of this apartment:</h4>
+    <h3>Show ratings of this apartment:</h3>
     <% if @apartment.reviews.blank? %>
     <p>Be the first to leave a review!</p>
     <% else %>
     <% @apartment.reviews.each do |review| %>
-
-    <%= review.rating %>
-    <%= review.content %>
+  <br>
+    <p><strong>Rating:
+    <% review.rating.to_i.times do  %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+    <% end %>
+    <% (5 - review.rating.to_i).times do  %>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+    <% end %>
+    </strong>
+    <p><%= review.content %>
+    <br>
     <% end %>
     <% end %>
   </div>
+
+
+
 
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>

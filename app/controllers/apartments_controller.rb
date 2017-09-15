@@ -2,7 +2,6 @@ class ApartmentsController < ApplicationController
    before_action :set_apartment, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @apartments = Apartment.all.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@apartments) do |apartment, marker|
@@ -21,6 +20,10 @@ class ApartmentsController < ApplicationController
 
     @apartment_coordinates = { lat: @apartment.latitude, lng: @apartment.longitude }
     @booking = Booking.new
+
+    reviews = @apartment.reviews.map { |r| r.rating }
+    @average = reviews.reduce(:+) / reviews.size
+
   end
 
   def new
