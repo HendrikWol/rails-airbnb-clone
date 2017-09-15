@@ -1,7 +1,12 @@
+<div class="booking-container">
+<div class="row">
+<div class="text-center">
+<h2>Booking requests:</h2>
+</div>
 
-<h1>Booking requests:</h1>
-
+<div class="col-xs-12 col-md-4 col-lg-3 ">
   <% @bookings.each do |booking| %>
+  <div class="card-description">
   <p><strong><%= booking.user.profile.first_name %></strong> made a request to book your apartment</p>
   <p><strong>Listing: </strong><%= booking.apartment.name %> in <%= booking.apartment.city%></p>
   <p><strong>From: </strong>
@@ -17,6 +22,7 @@
       <p>
         <strong>Status: </strong> <%= booking.status %>
       </p>
+      </div>
 
 
 
@@ -34,3 +40,7 @@
   <% end %>
   <br>
   <% end %>
+
+  </div>
+</div>
+</div>
