@@ -10,10 +10,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  # def new
-  #   @review  = Review.new
-  # end
-
   def create
     @review = Review.new(review_params)
     @apartment = Apartment.find(params[:apartment_id])
