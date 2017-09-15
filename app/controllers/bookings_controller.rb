@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
   def my_trips
     @profile = current_user.profile
     @bookings = @profile.user.bookings.where.not(status: "Declined")
+
   end
 
   def show
