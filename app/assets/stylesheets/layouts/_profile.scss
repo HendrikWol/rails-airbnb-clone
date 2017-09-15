@@ -1,8 +1,25 @@
 body {
   background: #F4F4F4;
 }
-.container {
+
+
+.profile-container {
   background-color: white;
-  margin-top: 10px;
-  padding: 150px;
+  margin: 50px;
+  padding: 50px;
+  position: flex;
 }
+
+.booking-container {
+   background-color: white;
+  margin: 50px;
+  padding: 50px;
+  position: flex;
+  justify-content: space-between;
+}
+// .container {
+//   background-color: white;
+//   margin-top: 10px;
+//   padding: 150px;
+// }
+

@@ -1,22 +1,44 @@
 
+<div class="profile-container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-3 col-lg-offset-2">
+      <div class="text-center">
+      <h3>Your information</h3>
+      <br>
+      <%= cl_image_tag @profile.photo, class: "card avatar-large" %>
+      <div class="card-description">
+        <hr>
+        <h4>  <%= @profile.first_name %> <%= @profile.last_name %> </h4>
+        <h5> About me: </h5>
+        <p><%= @profile.description %></p>
+        <h5>Date of birth:</h5>
+        <p><%= @profile.date_of_birth %></p>
+        <h5>Phone number:</h5>
+        <p><%= @profile.phone_number %></p>
+      </div>
+      </div>
+    </div>
 
+    <div class="col-xs-12 col-md-4 col-lg-3 col-lg-offset-2 ">
+      <div class="text-center">
+      <h3>Your listings</h3>
+      <br>
+      </div>
+      <% @profile.user.apartments.each do |apartment| %>
 
-<div class="container">
-  <ul class="list-unstyled">
-    <h1>Profile overview:</h1>
-    <%= cl_image_tag @profile.photo, height: 300, width: 400, crop: :fill %>
-    <li><strong>First name: </strong><%= @profile.first_name %></li>
-    <li><strong>Last name: </strong><%= @profile.last_name %></li>
-    <li><strong>Description: </strong><%= @profile.description %></li>
-    <li><strong>Date of birth: </strong><%= @profile.date_of_birth %></li>
-    <li><strong>Phone number: </strong><%= @profile.phone_number %></li>
-  </ul>
+      <%= link_to apartment_path(apartment) do %>
 
+      <div class="card" style="background-image: url('<%= cl_image_path apartment.photo, height: 300, width: 400, crop: :fill if apartment.photo? %>')">
+      </div>
 
-
-
-
-
-
+      <div class="card-description">
+        <h5><%= link_to apartment.name, apartment_path(apartment) %> | <%= apartment.city %></h5>
+        <p><%= apartment.apartment_type %> | €<%= apartment.price %> | Beds:<%= apartment.number_of_beds %></p>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
