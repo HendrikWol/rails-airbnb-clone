@@ -8,11 +8,11 @@
       <div class="profile">
           <!-- Inject flat data in template -->
         <div class="profile-box">
-          <h2><%= @apartment.name %></h2>
           <%= cl_image_tag @apartment.photo, height: 300, width: 400, crop: :fill %>
           </div>
           <div class="profile-description">
-            <h4><strong><%= @apartment.city %></strong></h4>
+          <h2><strong><%= @apartment.name %></strong></h2>
+            <h4><%= @apartment.city %>, <%= @apartment.country %></h4>
             <p><strong>€<%= @apartment.price %></strong> per night</p>
             <p><%= @apartment.description %></p>
 
@@ -79,14 +79,18 @@
 
 
     </div>
-      <h4>Show ratings of this apartment:</h4>
-      <% @apartment.reviews.each do |review| %>
 
-      <%= review.rating %>
-      <%= review.content %>
+    <h4>Show ratings of this apartment:</h4>
+    <% if @apartment.reviews.blank? %>
+    <p>Be the first to leave a review!</p>
+    <% else %>
+    <% @apartment.reviews.each do |review| %>
 
-      <% end %>
-</div>
+    <%= review.rating %>
+    <%= review.content %>
+    <% end %>
+    <% end %>
+  </div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

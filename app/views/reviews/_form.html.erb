@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-4-offset-3">
-      <%= simple_form_for(@review) do |f| %>
+      <%= simple_form_for([@apartment, @review], remote: true) do |f| %>
       <%= f.input :rating, as: :integer %>
-      <%= f.input :content %>
+      <%= f.input :content, as: :text %>
       <%= f.button :submit %>
       <% end %>
     </div>
